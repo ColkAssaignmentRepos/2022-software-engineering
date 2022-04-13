@@ -4,19 +4,33 @@
 //
 
 public class Reminder {
-
-    private string name;
-
+    private String name;
     private int priority;
-
     private ReminderList reminderList;
 
-    public Reminder() {
+    public String getName() {
+        return name;
+    }
 
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
+    public Reminder() {
+        this.name = "no name";
+        this.priority = 0;
     }
 
     public void show() {
-
+        System.out.println(this.name + "(" + this.priority + ")");
     }
 
 }
