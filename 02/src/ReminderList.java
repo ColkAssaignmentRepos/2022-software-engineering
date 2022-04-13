@@ -4,19 +4,32 @@
 //
 
 public class ReminderList {
-
     private Reminder[] reminder;
 
     public ReminderList() {
-
+        this.reminder = new Reminder[10];
     }
 
     public void show() {
+        System.out.println(
+                "----------Reminder List----------"
+        );
+        for (int i = 0; i < this.reminder.length; i++) {
+            if (this.reminder[i] == null) {
+                continue;
+            }
 
+            System.out.print(i + ": ");
+            this.reminder[i].show();
+        }
+        System.out.println(
+                "---------- End of List ----------"
+        );
+        System.out.println();
     }
 
     public void add(int i, Reminder r) {
-
+        this.reminder[i] = r;
     }
 
     public void remove(int i) {
