@@ -33,7 +33,7 @@ public class ReminderList {
     }
 
     public void remove(int i) {
-
+        this.reminder[i] = null;
     }
 
     public void clear() {
