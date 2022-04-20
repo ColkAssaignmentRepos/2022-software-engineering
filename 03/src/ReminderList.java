@@ -5,10 +5,15 @@
 
 public class ReminderList {
     private View view;
+
     private Reminder[] reminder;
 
     public View getView() {
         return view;
+    }
+
+    public Reminder[] getReminder() {
+        return reminder;
     }
 
     public void setView(View view) {
@@ -39,6 +44,8 @@ public class ReminderList {
 
     public void add(int i, Reminder r) {
         this.reminder[i] = r;
+
+        this.view.update();
     }
 
     public void remove(int i) {
