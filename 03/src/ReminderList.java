@@ -50,6 +50,8 @@ public class ReminderList {
 
     public void remove(int i) {
         this.reminder[i] = null;
+
+        this.view.update();
     }
 
     public void clear() {
