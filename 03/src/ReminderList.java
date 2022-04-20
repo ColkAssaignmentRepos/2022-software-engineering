@@ -56,6 +56,8 @@ public class ReminderList {
 
     public void clear() {
         this.reminder = new Reminder[10];
+
+        this.view.update();
     }
 
 }
