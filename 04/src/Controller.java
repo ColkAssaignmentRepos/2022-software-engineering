@@ -4,10 +4,7 @@
 // 伊藤 愛基 ( #2019024 )
 //
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-public class Controller implements ActionListener {
+public class Controller {
     private View view;
     private ReminderList reminderList;
 
@@ -15,20 +12,16 @@ public class Controller implements ActionListener {
         return view;
     }
 
-    public ReminderList getReminderList() {
-        return reminderList;
-    }
-
     public void setView(View view) {
         this.view = view;
     }
 
-    public void setReminderList(ReminderList reminderList) {
-        this.reminderList = reminderList;
+    public ReminderList getReminderList() {
+        return reminderList;
     }
 
-    public Controller() {
-
+    public void setReminderList(ReminderList reminderList) {
+        this.reminderList = reminderList;
     }
 
     public void add(int i, String n, int p) {
@@ -39,18 +32,5 @@ public class Controller implements ActionListener {
         r1.setPriority(p);
         //i番目にリマインダを追加する
         reminderList.add(i, r1);
-    }
-
-    public void remove(int i) {
-
-    }
-
-    public void clear() {
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
     }
 }
