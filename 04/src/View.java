@@ -4,17 +4,29 @@
 //
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class View {
+public class View implements ActionListener {
     private Controller controller;
     private ReminderList reminderList;
 
-    private Frame frame;
+    // リスト表示用フレーム
+    private Frame listFrame;
+
+    private final String LIST_WINDOW_TITLE = "Reminder - List";
+    private final int LIST_WINDOW_SIZE_W = 500;
+    private final int LIST_WINDOW_SIZE_H = 300;
+
     private List list;
 
-    private final String WINDOW_TITLE = "Reminder";
-    private final int WINDOW_SIZE_W = 250;
-    private final int WINDOW_SIZE_H = 250;
+    // 追加用フレーム
+    private Frame addFrame;
+
+    private final String ADD_WINDOW_TITLE = "Reminder - Add";
+
+    private TextField index, name, priority;
+    private Button add;
 
     public Controller getController() {
         return controller;
@@ -32,16 +44,39 @@ public class View {
         this.reminderList = reminderList;
     }
 
-
     public View() {
-        this.frame = new Frame(this.WINDOW_TITLE);
+        // リスト表示用フレームのセットアップ
+        this.listFrame = new Frame(this.LIST_WINDOW_TITLE);
         this.list = new List();
 
-        this.frame.setSize(this.WINDOW_SIZE_W, this.WINDOW_SIZE_H);
+        this.listFrame.setSize(this.LIST_WINDOW_SIZE_W, this.LIST_WINDOW_SIZE_H);
 
-        this.frame.add(this.list, BorderLayout.CENTER);
+        this.listFrame.add(this.list, BorderLayout.CENTER);
 
-        this.frame.setVisible(true);
+        // 追加用フレームのセットアップ
+        this.addFrame = new Frame(this.ADD_WINDOW_TITLE);
+
+        this.index = new TextField(5);
+        this.name = new TextField(12);
+        this.priority = new TextField(3);
+
+        this.add = new Button("add");
+
+        this.addFrame.setLayout(new FlowLayout());
+
+        this.addFrame.add(this.index);
+        this.addFrame.add(this.name);
+        this.addFrame.add(this.priority);
+        this.addFrame.add(this.add);
+
+        this.addFrame.pack();
+
+        // ActionListener の指定
+        this.add.addActionListener(this);
+
+        // フレームの表示
+        this.listFrame.setVisible(true);
+        this.addFrame.setVisible(true);
     }
 
     public void update() {
@@ -64,5 +99,9 @@ public class View {
             //リストにリマインダ情報の文字列を追加
             this.list.add(str);
         }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
     }
 }
