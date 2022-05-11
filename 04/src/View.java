@@ -73,6 +73,7 @@ public class View implements ActionListener {
 
         // ActionListener の指定
         this.add.addActionListener(this);
+        this.list.addActionListener(this);
 
         // フレームの表示
         this.listFrame.setVisible(true);
@@ -117,6 +118,17 @@ public class View implements ActionListener {
             //・nはリマインダの名前
             //・pはリマインダ優先度
             controller.add(i, n, p);
+        }
+        if (e.getSource() == list) {
+            //ダブルクリックで選択された項目の場所をsに代入
+            int s = list.getSelectedIndex();
+            //リマインダのリストを取得
+            Reminder[] l = reminderList.getReminder();
+            //テキストフィールドにリマインダの情報をsetする
+            //（整数はString.valueOfで文字列に変換）
+            index.setText(String.valueOf(s));
+            name.setText(l[s].getName());
+            priority.setText(String.valueOf(l[s].getPriority()));
         }
     }
 }
