@@ -49,4 +49,10 @@ public class Controller {
         //i番目のリマインダを削除する
         reminderList.remove(i);
     }
+
+    // 課題5-5 Controller().clear() ( 作業 3 )
+    public void clear() {
+        //リマインダのリストの全要素を削除する
+        reminderList.clear();
+    }
 }

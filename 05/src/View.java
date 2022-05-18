@@ -35,10 +35,13 @@ public class View implements ActionListener {
     private Choice index2;    //改良版GUIの追加場所
     private Choice priority2; //改良版GUIの優先度\
 
-    // 仮題 5-4 用フレーム ( 作業 1 )
+    // 課題 5-4 用フレーム ( 作業 1 )
     private Frame removeFrame;
     private TextField indexrm;
     private Button removeButton;
+
+    // 課題 5-5 用フレーム ( 作業 1 )
+    private Button clearButton;
 
     public Controller getController() {
         return controller;
@@ -127,6 +130,13 @@ public class View implements ActionListener {
         this.removeFrame.setVisible(true);
 
         this.removeButton.addActionListener(this);
+
+        // 課題 5-5 用 初期化処理 ( 作業 1 )
+        this.clearButton = new Button("clear");
+
+        this.removeFrame.add(this.clearButton);
+
+        this.clearButton.addActionListener(this);
     }
 
     public void update() {
@@ -209,6 +219,11 @@ public class View implements ActionListener {
             //Controllerのメソッドremoveを呼び出す
             //iは削除する配列の場所
             controller.remove(i);
+        }
+        // 課題 5-5 actionPerformed 追加処理 ( 作業 2 )
+        if (e.getSource() == this.clearButton) {
+            //Controllerのメソッドclearを呼び出す
+            controller.clear();
         }
     }
 }
