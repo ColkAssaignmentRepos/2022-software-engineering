@@ -43,4 +43,10 @@ public class Controller {
         //i番目にリマインダを追加する
         reminderList.add(i, r1);
     }
+
+    // 課題5-4 Controller().remove() ( 作業 3 )
+    public void remove(int i) {
+        //i番目のリマインダを削除する
+        reminderList.remove(i);
+    }
 }

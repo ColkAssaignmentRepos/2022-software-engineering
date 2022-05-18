@@ -33,7 +33,12 @@ public class View implements ActionListener {
     private Button add2;      //改良版GUIの追加ボタン
     private TextField name2;  //改良版GUIのリマインダ名
     private Choice index2;    //改良版GUIの追加場所
-    private Choice priority2; //改良版GUIの優先度
+    private Choice priority2; //改良版GUIの優先度\
+
+    // 仮題 5-4 用フレーム ( 作業 1 )
+    private Frame removeFrame;
+    private TextField indexrm;
+    private Button removeButton;
 
     public Controller getController() {
         return controller;
@@ -107,6 +112,21 @@ public class View implements ActionListener {
         f5.setVisible(true);
         //追加用ボタンにリスナを登録
         add2.addActionListener(this);
+
+        // 仮題 5-4 用 初期化処理 ( 作業 1 )
+        this.removeFrame = new Frame();
+        this.indexrm = new TextField(15);
+        this.removeButton = new Button("remove");
+
+        this.removeFrame.setLayout(new FlowLayout());
+
+        this.removeFrame.add(this.indexrm);
+        this.removeFrame.add(this.removeButton);
+
+        this.removeFrame.pack();
+        this.removeFrame.setVisible(true);
+
+        this.removeButton.addActionListener(this);
     }
 
     public void update() {
@@ -181,6 +201,14 @@ public class View implements ActionListener {
             //・nはリマインダの名前
             //・pはリマインダ優先度
             controller.add(i, n, p);
+        }
+        // 課題 5-4 actionPerformed 追加処理 ( 作業 2 )
+        if (e.getSource() == this.removeButton) {
+            //テキストフィールドから情報を取得するして整数に変換する
+            i = Integer.parseInt(indexrm.getText());
+            //Controllerのメソッドremoveを呼び出す
+            //iは削除する配列の場所
+            controller.remove(i);
         }
     }
 }
