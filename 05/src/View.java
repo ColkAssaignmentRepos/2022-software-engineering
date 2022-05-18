@@ -28,6 +28,13 @@ public class View implements ActionListener {
     private TextField index, name, priority;
     private Button add;
 
+    // 課題 5-1 用 コンポーネント ( 作業 1 )
+    private Frame f5;         //改良版GUIのフレーム
+    private Button add2;      //改良版GUIの追加ボタン
+    private TextField name2;  //改良版GUIのリマインダ名
+    private Choice index2;    //改良版GUIの追加場所
+    private Choice priority2; //改良版GUIの優先度
+
     public Controller getController() {
         return controller;
     }
@@ -78,6 +85,28 @@ public class View implements ActionListener {
         // フレームの表示
         this.listFrame.setVisible(true);
         this.addFrame.setVisible(true);
+
+        // 課題 5-1 用 初期化処理 ( 作業 2 )
+        //GUI部品を作る
+        f5 = new Frame();
+        index2 = new Choice();     //今回ポップアップメニューに変更してみた
+        name2 = new TextField(15);
+        priority2 = new Choice();  //今回ポップアップメニューに変更してみた
+        add2 = new Button("add");
+        //優先度用ポップアップメニューの項目を作る
+        for (int i = 1; i <= 5; i++) {
+            priority2.add(String.valueOf(i));
+        }
+        //フレームに部品を追加して表示
+        f5.setLayout(new FlowLayout());
+        f5.add(index2);
+        f5.add(name2);
+        f5.add(priority2);
+        f5.add(add2);
+        f5.pack();
+        f5.setVisible(true);
+        //追加用ボタンにリスナを登録
+        add2.addActionListener(this);
     }
 
     public void update() {
@@ -100,6 +129,16 @@ public class View implements ActionListener {
             //リストにリマインダ情報の文字列を追加
             this.list.add(str);
         }
+
+        // 課題 5-1 ( 作業 3 )
+        //追加先のメニュー項目を全て消す
+        index2.removeAll();
+        //リマインダの配列の長さ分だけ項目を作る
+        for (int i = 0; i < l.length; i++) {
+            index2.add(String.valueOf(i));
+        }
+        //メニュー項目が変わったので念のためフレームの部品を再配置する
+        f5.pack();
     }
 
     @Override
@@ -129,6 +168,19 @@ public class View implements ActionListener {
             index.setText(String.valueOf(s));
             name.setText(l[s].getName());
             priority.setText(String.valueOf(l[s].getPriority()));
+        }
+        // 課題 5-1 actionPerformed 追加処理 ( 作業 4 )
+        if (e.getSource() == add2) {
+            //ポップアップメニューから情報を取得するして整数に変換する
+            //（メソッドparseIntは取得した文字列をint型に変換する）
+            i = Integer.parseInt(index2.getSelectedItem());
+            p = Integer.parseInt(priority2.getSelectedItem());
+            n = name2.getText();
+            //Controllerのメソッドaddを呼び出す
+            //・iは追加する配列の場所
+            //・nはリマインダの名前
+            //・pはリマインダ優先度
+            controller.add(i, n, p);
         }
     }
 }
