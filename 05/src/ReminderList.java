@@ -21,7 +21,8 @@ public class ReminderList {
     }
 
     public ReminderList() {
-        this.reminder = new Reminder[10];
+        // 課題 5-2 で 要素数 20 に変更
+        this.reminder = new Reminder[20];
     }
 
     public void show() {
@@ -55,7 +56,8 @@ public class ReminderList {
     }
 
     public void clear() {
-        this.reminder = new Reminder[10];
+        // 課題 5-2 で 要素数 20 に変更
+        this.reminder = new Reminder[20];
 
         this.view.update();
     }
