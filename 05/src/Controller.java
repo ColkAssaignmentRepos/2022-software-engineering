@@ -1,6 +1,5 @@
 //
 // Created by Manaki ITO on 2022/04/20.
-// Modified by Manaki ITO on 2022/05/01.
 // 伊藤 愛基 ( #2019024 )
 //
 

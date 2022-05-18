@@ -126,9 +126,6 @@ public class View implements ActionListener {
         this.removeFrame.add(this.indexrm);
         this.removeFrame.add(this.removeButton);
 
-        this.removeFrame.pack();
-        this.removeFrame.setVisible(true);
-
         this.removeButton.addActionListener(this);
 
         // 課題 5-5 用 初期化処理 ( 作業 1 )
@@ -137,6 +134,9 @@ public class View implements ActionListener {
         this.removeFrame.add(this.clearButton);
 
         this.clearButton.addActionListener(this);
+
+        this.removeFrame.pack();
+        this.removeFrame.setVisible(true);
     }
 
     public void update() {
