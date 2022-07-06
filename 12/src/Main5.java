@@ -1,4 +1,8 @@
-//ここに自分の名前
+//
+// Edited by Manaki ITO on 2022/07/06.
+// 伊藤 愛基 ( #2019024 )
+//
+
 public class Main5 {
     public static void main(String[] args) {
         //Observerを作る
