@@ -1,3 +1,9 @@
+//
+// Edited by Manaki ITO on 2022/07/13.
+// 伊藤 愛基 ( #2019024 )
+//
+
+
 import java.util.ArrayList;
 
 import javax.swing.event.TreeModelListener;
@@ -25,7 +31,7 @@ public class MyTreeModel implements TreeModel {
         return children.size();
     }
     public boolean isLeaf(Object node) {
-        if(node instanceof File) {
+        if(node instanceof File || node instanceof Member) {
             return true;
         } else {
             return false;
