@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
 
-public class Class implements Component {
-    protected String name;
+public class Interface extends Class {
     private ArrayList<Component> children;
 
-    public Class(String n) {
-        this.name = n;
+    public Interface(String n) {
+        super(n);
+
         this.children = new ArrayList<Component>();
     }
 
@@ -19,6 +19,6 @@ public class Class implements Component {
     }
 
     public String toString() {
-        return this.name;
+        return "<<interface>>" + " " + this.name;
     }
 }
